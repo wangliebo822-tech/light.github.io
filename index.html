@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIGHT LAB · 品牌文化手册</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ═══ DESIGN TOKENS ═══ */
+    :root {
+      --red:       rgb(161, 24, 34);
+      --red-hex:   #A11822;
+      --red-light: rgba(161,24,34,.08);
+      --red-mid:   rgba(161,24,34,.15);
+      --black:     #0D0D0D;
+      --gray-dark: #3A3A3A;
+      --gray:      #7A7A7A;
+      --gray-lt:   #B8B8B8;
+      --line:      #E8E8E8;
+      --bg:        #FFFFFF;
+      --bg-soft:   #F8F7F5;
+      --section-gap: 110px;
+
+      /* 字体 */
+      --font-en: 'Cinzel', 'Georgia', serif;
+      --font-cn: 'ZCOOL DianZiHei', '点字典黑', 'PingFang SC', 'Microsoft YaHei', '微软雅黑', sans-serif;
+      --font-body: 'PingFang SC', 'Microsoft YaHei', '微软雅黑', 'Hiragino Sans GB', sans-serif;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; font-size:16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--black);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══ NAV ═══ */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 64px;
+      height: 70px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-brand {
+      display: flex; flex-direction: column;
+      gap: 1px;
+    }
+    .nav-brand-en {
+      font-family: var(--font-en);
+      font-size: .95rem; font-weight: 600;
+      color: var(--red-hex);
+      letter-spacing: .18em;
+      line-height: 1;
+    }
+    .nav-brand-cn {
+      font-family: var(--font-cn);
+      font-size: .6rem;
+      color: var(--gray);
+      letter-spacing: .25em;
+    }
+    .nav-links {
+      display: flex; gap: 36px;
+    }
+    .nav-links a {
+      font-family: var(--font-en);
+      font-size: .62rem; letter-spacing: .15em;
+      text-decoration: none;
+      color: var(--gray);
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--red-hex); }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #810f10 0%, #5a0a0a 50%, #1a0a0a 100%);
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 120px 64px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* 肌理颗粒 — 多层叠加 */
+    .hero-grain {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.05' numOctaves='2'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)'/%3E%3C/svg%3E");
+      opacity: 0.12;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+    /* 底部暗光晕 */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0,0,0,0.3) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 800px;
+    }
+    .hero-label {
+      font-family: var(--font-en);
+      font-size: .62rem; letter-spacing: .4em;
+      color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+    }
+    .hero-label::before, .hero-label::after {
+      content:''; display:inline-block;
+      width: 32px; height: 1px;
+      background: rgba(255,255,255,.3);
+    }
+    .hero-brand {
+      font-family: var(--font-en);
+      font-size: clamp(3.2rem, 7vw, 6rem);
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: .12em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .hero-brand-r {
+      font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+      vertical-align: super;
+      font-weight: 400;
+    }
+    .hero-cn {
+      font-family: var(--font-cn);
+      font-size: clamp(.85rem, 1.5vw, 1.1rem);
+      color: rgba(255,255,255,.6);
+      letter-spacing: .35em;
+      margin-bottom: 56px;
+    }
+    .hero-divider {
+      display: flex; align-items: center; justify-content: center; gap: 20px;
+      margin-bottom: 56px;
+    }
+    .hero-divider::before, .hero-divider::after {
+      content:''; display:block;
+      width: 56px; height: 1px;
+      background: rgba(255,255,255,.25);
+    }
+    .hero-divider-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: #D4B896;
+    }
+    .hero-tagline {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0;
+      margin-bottom: 12px;
+    }
+    .hero-tl-l1 {
+      font-family: var(--font-en);
+      font-size: .62rem; letter-spacing: .4em;
+      color: rgba(255,255,255,.3);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-tl-line {
+      font-family: var(--font-cn);
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: .08em;
+      display: block;
+    }
+    .hero-tl-line--white { color: rgba(255,255,255,.9); }
+    .hero-tl-line--gold {
+      color: #D4B896;
+      font-weight: 500;
+      letter-spacing: .1em;
+    }
+    .hero-tl-l3 {
+      font-family: var(--font-en);
+      font-size: .55rem; letter-spacing: .35em;
+      color: rgba(255,255,255,.22);
+      text-transform: uppercase;
+      margin-top: 24px;
+    }
+    .hero-sub {
+      display: none;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-family: var(--font-en);
+      font-size: .58rem; letter-spacing: .25em;
+      color: rgba(255,255,255,.35);
+      text-transform: uppercase;
+    }
+    .hero-scroll::after {
+      content:''; width:1px; height:28px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent);
+    }
+
+    /* ═══ SECTION COMMON ═══ */
+    section { padding: var(--section-gap) 64px; }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+    .s-label {
+      font-family: var(--font-en);
+      font-size: .6rem; letter-spacing: .38em;
+      color: var(--red-hex);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .s-title {
+      font-family: var(--font-cn);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--black);
+      letter-spacing: .04em;
+      line-height: 1.35;
+    }
+    .s-intro {
+      margin-top: 14px;
+      font-size: .88rem;
+      color: var(--gray);
+      max-width: 520px;
+      line-height: 2;
+    }
+    .s-rule {
+      width: 32px; height: 2px;
+      background: var(--red-hex);
+      margin: 24px 0 52px;
+    }
+
+    /* ═══ MVV ═══ */
+    .mvv-section { background: var(--bg-soft); }
+    .mvv-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .mvv-card {
+      background: #fff;
+      padding: 48px 40px;
+      position: relative;
+      transition: all .35s;
+    }
+    .mvv-card::before {
+      content:'';
+      position: absolute; top: 0; left: 40px; right: 40px;
+      height: 2px;
+      background: transparent;
+      transition: background .35s;
+    }
+    .mvv-card:hover::before { background: var(--red-hex); }
+    .mvv-card:hover { background: #FAFAFA; }
+    .mvv-card-en {
+      font-family: var(--font-en);
+      font-size: .6rem; letter-spacing: .3em;
+      color: var(--red-hex);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .mvv-card-q {
+      font-family: var(--font-en);
+      font-size: .58rem; letter-spacing: .1em;
+      color: var(--gray-lt);
+      margin-bottom: 24px;
+    }
+    .mvv-card-title {
+      font-family: var(--font-cn);
+      font-size: 1.15rem;
+      color: var(--black);
+      line-height: 1.65;
+      margin-bottom: 18px;
+      letter-spacing: .03em;
+    }
+    .mvv-card-desc {
+      font-size: .82rem;
+      color: var(--gray);
+      line-height: 2;
+    }
+
+    /* ═══ VALUES ═══ */
+    .values-section { background: #fff; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .value-item {
+      background: #fff;
+      padding: 44px 48px;
+      display: flex; gap: 28px; align-items: flex-start;
+      transition: background .25s;
+      position: relative;
+    }
+    .value-item::after {
+      content:'';
+      position: absolute; bottom: 0; left: 48px; right: 48px;
+      height: 0;
+    }
+    .value-item:hover { background: var(--bg-soft); }
+    .value-num {
+      font-family: var(--font-en);
+      font-size: 1.8rem; font-weight: 400;
+      color: var(--red-hex);
+      line-height: 1; flex-shrink: 0;
+      width: 44px; opacity: .9;
+      letter-spacing: -.02em;
+    }
+    .value-name {
+      font-family: var(--font-cn);
+      font-size: 1.05rem;
+      color: var(--black);
+      margin-bottom: 10px;
+      letter-spacing: .04em;
+    }
+    .value-desc {
+      font-size: .83rem;
+      color: var(--gray);
+      line-height: 1.9;
+    }
+
+    /* ═══ PHILOSOPHY ═══ */
+    .phi-section { background: var(--bg-soft); }
+    .phi-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+    .phi-block-head {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .phi-block-title {
+      font-family: var(--font-cn);
+      font-size: 1.15rem;
+      color: var(--black);
+      letter-spacing: .04em;
+    }
+    .phi-block-en {
+      font-family: var(--font-en);
+      font-size: .58rem; letter-spacing: .25em;
+      color: var(--gray-lt);
+      text-transform: uppercase;
+    }
+    .phi-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--red-hex); color: #fff;
+      font-family: var(--font-cn);
+      font-size: .8rem; letter-spacing: .1em;
+      padding: 8px 22px;
+      margin-bottom: 20px;
+    }
+    .phi-desc {
+      font-size: .85rem;
+      color: var(--gray);
+      line-height: 2;
+      margin-bottom: 18px;
+    }
+    .phi-desc strong { color: var(--black); }
+    .svc-items { display: flex; flex-direction: column; gap: 24px; }
+    .svc-item {
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .svc-num {
+      font-family: var(--font-en);
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .1em;
+      color: #fff;
+      background: var(--red-hex);
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .svc-text {
+      font-size: .83rem;
+      color: var(--gray);
+      line-height: 1.85;
+    }
+    .svc-text strong { color: var(--black); display: block; margin-bottom: 4px; }
+
+    /* ═══ TEAM ═══ */
+    .team-section { background: #fff; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .trait-card {
+      background: #fff;
+      padding: 36px 28px 32px;
+      text-align: center;
+      position: relative;
+      transition: all .3s;
+      overflow: hidden;
+    }
+    .trait-card::before {
+      content:'';
+      position:absolute; bottom:0; left:0; right:0;
+      height: 2px; background: var(--red-hex);
+      transform: scaleX(0); transition: transform .3s;
+    }
+    .trait-card:hover::before { transform: scaleX(1); }
+    .trait-card:hover { background: var(--bg-soft); }
+    .trait-icon {
+      width: 26px; height: 26px;
+      margin-bottom: 14px;
+      display: block;
+      stroke: #222;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      opacity: 0.7;
+    }
+    .trait-icon polygon { fill: none; }
+    .trait-name {
+      font-family: var(--font-cn);
+      font-size: .9rem;
+      color: #810f10;
+      margin-bottom: 8px;
+      letter-spacing: .04em;
+    }
+    .trait-desc {
+      font-size: .76rem;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    /* ═══ PROMISE ═══ */
+    .promise-section {
+      background: linear-gradient(180deg, #810f10 0%, #5a0a0a 50%, #1a0a0a 100%);
+      text-align: center;
+      padding: 120px 64px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    /* 鎏金颗粒纹理 */
+    .promise-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.06;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+    /* 底部暗光晕 */
+    .promise-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0,0,0,0.3) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .promise-inner {
+      position: relative; z-index: 1;
+      max-width: 720px;
+    }
+    .promise-en {
+      font-family: var(--font-en);
+      font-size: .55rem; letter-spacing: .5em;
+      color: rgba(255,255,255,.3);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .promise-title {
+      font-family: var(--font-cn);
+      font-size: clamp(1.3rem, 2.8vw, 2rem);
+      color: rgba(255,255,255,.85);
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: .06em;
+      margin-bottom: 0;
+    }
+    .promise-title em {
+      font-style: normal;
+      color: #D4B896;
+      font-weight: 600;
+      letter-spacing: .1em;
+    }
+    .promise-line {
+      display: block;
+    }
+    .promise-desc {
+      font-size: .82rem;
+      color: rgba(255,255,255,.5);
+      margin-top: 40px;
+      line-height: 2;
+      letter-spacing: .06em;
+    }
+
+    /* ═══ BEHAVIOR ═══ */
+    .beh-section { background: var(--bg-soft); }
+    .beh-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .beh-table thead tr {
+      background: var(--black);
+    }
+    .beh-table th {
+      font-family: var(--font-en);
+      font-size: .6rem; letter-spacing: .2em;
+      color: #fff;
+      padding: 18px 28px;
+      text-align: left;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .beh-table td {
+      font-size: .83rem;
+      color: var(--gray-dark);
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.75;
+    }
+    .beh-table td:first-child {
+      font-family: var(--font-cn);
+      color: var(--black);
+      font-size: .88rem;
+      white-space: nowrap;
+      width: 140px;
+    }
+    .beh-table tr:last-child td { border-bottom: none; }
+    .beh-table tr:hover td { background: var(--bg-soft); }
+    .beh-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .7rem; font-weight: 500;
+    }
+    .beh-badge-do { color: #1E7E4A; }
+    .beh-badge-dont { color: var(--red-hex); }
+
+    /* ═══ REFERENCE ═══ */
+    .ref-section { background: #fff; }
+    .ref-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .ref-card {
+      border: 1px solid var(--line);
+      padding: 44px 40px;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .ref-card:hover {
+      border-color: var(--red-hex);
+      box-shadow: 0 4px 32px rgba(161,24,34,.06);
+    }
+    .ref-name {
+      font-family: var(--font-en);
+      font-size: 1.5rem; font-weight: 600;
+      color: var(--black);
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+    }
+    .ref-type {
+      font-family: var(--font-en);
+      font-size: .58rem; letter-spacing: .22em;
+      color: var(--red-hex);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .ref-desc {
+      font-size: .83rem;
+      color: var(--gray);
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+    .ref-lessons {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .ref-lesson {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: .8rem; color: var(--black);
+      line-height: 1.75;
+    }
+    .ref-lesson::before {
+      content:'—';
+      color: var(--red-hex);
+      flex-shrink: 0;
+      font-family: var(--font-en);
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      background: var(--black);
+      padding: 56px 64px;
+      text-align: center;
+    }
+    .footer-brand-en {
+      font-family: var(--font-en);
+      font-size: 1.4rem; font-weight: 600;
+      letter-spacing: .2em;
+      color: var(--red-hex);
+      margin-bottom: 4px;
+    }
+    .footer-brand-cn {
+      font-family: var(--font-cn);
+      font-size: .78rem; letter-spacing: .3em;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 28px;
+    }
+    .footer-slogan {
+      font-family: var(--font-cn);
+      font-size: .85rem;
+      color: rgba(255,255,255,.45);
+      letter-spacing: .08em;
+      margin-bottom: 28px;
+    }
+    .footer-divider {
+      width: 40px; height: 1px;
+      background: rgba(255,255,255,.12);
+      margin: 0 auto 20px;
+    }
+    .footer-meta {
+      font-family: var(--font-en);
+      font-size: .58rem; letter-spacing: .18em;
+      color: rgba(255,255,255,.2);
+      text-transform: uppercase;
+      line-height: 2;
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media(max-width:960px){
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      .mvv-cards { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .phi-cols { grid-template-columns: 1fr; gap: 48px; }
+      .team-grid { grid-template-columns: repeat(2,1fr); }
+      .ref-cards { grid-template-columns: 1fr; }
+      footer { padding: 40px 24px; }
+    }
+
+    /* ═══ ANIMATIONS ═══ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in {
+      opacity: 0;
+      transition: opacity .75s ease;
+    }
+    .fade-in.visible { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-en">LIGHT LAB</span>
+    <span class="nav-brand-cn">光·研肤中心</span>
+  </div>
+  <div class="nav-links">
+    <a href="#mvv">Mission</a>
+    <a href="#values">Values</a>
+    <a href="#phi">Philosophy</a>
+    <a href="#team">Team</a>
+    <a href="#behavior">Standards</a>
+    <a href="#ref">Inspiration</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-inner fade-up">
+    <p class="hero-label">Brand Culture Manual</p>
+    <div class="hero-brand">LIGHT LAB<sup class="hero-brand-r">®</sup></div>
+    <p class="hero-cn">光 · 研 肤 中 心</p>
+    <div class="hero-divider"><div class="hero-divider-dot"></div></div>
+    <div class="hero-tagline">
+      <p class="hero-tl-l1">Skin Care &amp; Beyond</p>
+      <span class="hero-tl-line hero-tl-line--white">不止护肤</span>
+      <span class="hero-tl-line hero-tl-line--gold">更是一种精致自信的</span>
+      <span class="hero-tl-line hero-tl-line--white">生活方式</span>
+      <p class="hero-tl-l3">Science · Elegance · Confidence</p>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ══ MISSION / VISION / VALUES ══ -->
+<section class="mvv-section" id="mvv">
+  <div class="section-inner">
+    <div class="fade-up">
+      <p class="s-label">Foundation</p>
+      <h2 class="s-title">使命、愿景与价值观</h2>
+      <p class="s-intro">一家真正伟大的品牌，从不只是销售护理。我们存在的意义、渴望成为的样子，以及每天行动的方式——构成了品牌最底层的灵魂。</p>
+      <div class="s-rule"></div>
+    </div>
+    <div class="mvv-cards fade-in">
+      <div class="mvv-card">
+        <p class="mvv-card-en">Mission</p>
+        <p class="mvv-card-q">WHY — 我们为什么存在</p>
+        <h3 class="mvv-card-title">不止护肤，更是一种<br/>精致自信的生活方式。</h3>
+        <p class="mvv-card-desc">
+          我们相信，每一位女性都值得用最好的科学与温度呵护自己。护肤不是负担，而是每天与自己和解、与美好相遇的仪式感。我们存在，是为了让更多女性从皮肤开始，爱上自己。
+        </p>
+      </div>
+      <div class="mvv-card">
+        <p class="mvv-card-en">Vision</p>
+        <p class="mvv-card-q">WHAT — 我们想成为什么</p>
+        <h3 class="mvv-card-title">成为女性肌肤管理<br/>与品质生活的首选品牌。</h3>
+        <p class="mvv-card-desc">
+          在每一座城市、每一个生活场景中，当女性想到「可以信任、有温度、懂我」的肌肤管理品牌时，第一个想到的就是我们。我们不只做护理，更构建一个有归属感的女性美丽社区。
+        </p>
+      </div>
+      <div class="mvv-card">
+        <p class="mvv-card-en">Values</p>
+        <p class="mvv-card-q">HOW — 我们怎么去行动</p>
+        <h3 class="mvv-card-title">客户第一 · 科学护肤 · 品质至上<br/>有温度 · 开心团队 · 爱自己·爱客户</h3>
+        <p class="mvv-card-desc">
+          价值观是我们每天做决策的指南针。无论面对护理研发、服务设计，还是团队协作，这六项价值观都是我们检验行为正确与否的最终标准。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VALUES DETAIL ══ -->
+<section class="values-section" id="values">
+  <div class="section-inner">
+    <div class="fade-up">
+      <p class="s-label">Values In Depth</p>
+      <h2 class="s-title">六项核心价值观</h2>
+      <p class="s-intro">每一项价值观，都不是口号，而是我们真实行动的方式。</p>
+      <div class="s-rule"></div>
+    </div>
+    <div class="values-grid fade-in">
+      <div class="value-item">
+        <div class="value-num">01</div>
+        <div>
+          <div class="value-name">客户第一</div>
+          <div class="value-desc">用户永远是我们一切工作的出发点和落脚点。不以我们的判断代替客户的感受，用真实的反馈驱动每一次迭代。服务每一位客户，都像对待重要的朋友。</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">02</div>
+        <div>
+          <div class="value-name">科学护肤</div>
+          <div class="value-desc">拒绝伪科学与过度营销。我们以皮肤学研究为基础，用成分说话，用数据佐证，用真实效果赢得信任。给客户专业、诚实、有依据的护肤建议。</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">03</div>
+        <div>
+          <div class="value-name">品质至上</div>
+          <div class="value-desc">对护理品质永不妥协。从原料筛选到配方研发，从包装设计到使用体验，每一个细节都代表我们对客户的承诺。品质是我们最不可撼动的底线。</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">04</div>
+        <div>
+          <div class="value-name">有温度</div>
+          <div class="value-desc">我们不只销售护理，更传递关怀与陪伴。每一条回复、每一次沟通，都带着真诚的温度。让客户感受到：被看见、被尊重、被好好对待。</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">05</div>
+        <div>
+          <div class="value-name">开心团队</div>
+          <div class="value-desc">只有开心的团队才能服务好开心的客户。我们鼓励真实表达、相互支持、共同成长。工作应该是充满能量的事，而不是消耗的过程。</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">06</div>
+        <div>
+          <div class="value-name">爱自己 · 爱客户</div>
+          <div class="value-desc">爱自己是起点——当我们真正爱护自己的状态，才有能量去爱客户。爱客户是使命——我们把客户的美丽与自信当作自己的事业。两者相辅相成，缺一不可。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHILOSOPHY ══ -->
+<section class="phi-section" id="phi">
+  <div class="section-inner">
+    <div class="fade-up">
+      <p class="s-label">Philosophy</p>
+      <h2 class="s-title">经营哲学</h2>
+      <p class="s-intro">理念不是贴在墙上的标语，而是我们日常经营每一个决策的底层逻辑。</p>
+      <div class="s-rule"></div>
+    </div>
+    <div class="phi-cols">
+      <div class="fade-up">
+        <div class="phi-block-head">
+          <h3 class="phi-block-title">经营理念</h3>
+          <span class="phi-block-en">Core Principle</span>
+        </div>
+        <div class="phi-tag">专业 · 热爱</div>
+        <p class="phi-desc">
+          我们相信：真正做好一件事，需要同时具备「专业」与「热爱」。专业是基础——扎实的知识、严谨的标准、持续的学习；热爱是动力——发自内心对护肤、对客户、对美好生活的热情。
+        </p>
+        <p class="phi-desc">
+          <strong>专业体现在：</strong>持续学习皮肤科学、精选有效成分、给出真实可靠的建议。<br/>
+          <strong>热爱体现在：</strong>每一次服务都全情投入，把客户的改变当作自己的成就感。
+        </p>
+      </div>
+      <div class="fade-up" style="transition-delay:.2s">
+        <div class="phi-block-head">
+          <h3 class="phi-block-title">服务理念</h3>
+          <span class="phi-block-en">Service Principles</span>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <div class="svc-num">01</div>
+            <div class="svc-text">
+              <strong>用户不一定是对的，但用户永远是我们的用户。</strong>
+              我们尊重客户，即便意见不同，也保持耐心与尊重，以共识代替争辩，以事实代替情绪。
+            </div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">02</div>
+            <div class="svc-text">
+              <strong>满意只是起点，惊喜和感动才是目标。</strong>
+              我们不以"达标"为终点，而是持续寻找超越期望的可能——让客户感受到真诚与用心。
+            </div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">03</div>
+            <div class="svc-text">
+              <strong>持续的用户满意，是判断价值的唯一标准。</strong>
+              我们不以短期销售论英雄。客户是否持续回来、是否持续推荐，才是衡量我们真实价值的坐标。
+            </div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">04</div>
+            <div class="svc-text">
+              <strong>我们不是无所不能，但一定竭尽所能。</strong>
+              我们对自己诚实，不过度承诺。但在能力范围内，我们全力以赴，不找借口，不推诿责任。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM ══ -->
+<section class="team-section" id="team">
+  <div class="section-inner">
+    <div class="fade-up">
+      <p class="s-label">Team Culture</p>
+      <h2 class="s-title">我们是什么样的团队</h2>
+      <p class="s-intro">团队理念是我们相处、协作、成长的方式。它不是要求，而是我们真正认同、愿意一起践行的共同底色。</p>
+      <div class="s-rule"></div>
+    </div>
+    <div class="team-grid fade-in">
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3C7 3 3 7 3 12c0 3 1.5 5.5 4 7l1-2c-1.5-1-2.5-2.5-2.5-5 0-3.5 3-6 6.5-6s6.5 2.5 6.5 6c0 2.5-1 4-2.5 5l1 2c2.5-1.5 4-4 4-7 0-5-4-9-9-9z"/><path d="M12 8v8M8 12h8"/></svg>
+        </span>
+        <div class="trait-name">简单</div>
+        <div class="trait-desc">坦诚沟通，不绕弯子。简单的关系里有最真实的信任。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </span>
+        <div class="trait-name">真诚</div>
+        <div class="trait-desc">真心对待彼此与客户，不表演，不敷衍，说真话，做真事。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2c0 0-5 5-5 10a5 5 0 0 0 10 0c0-5-5-10-5-10z"/><path d="M12 12c0 0 1.5 1.5 1.5 3s-1.5 3-1.5 3-1.5-1.5-1.5-3 1.5-3 1.5-3z"/></svg>
+        </span>
+        <div class="trait-name">有温度</div>
+        <div class="trait-desc">做有人情味的团队，关心人的感受，传递暖意与力量。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </span>
+        <div class="trait-name">感恩</div>
+        <div class="trait-desc">感恩客户的信任，感恩同伴的支持，在感恩中保持谦逊与前进。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 3-2 5.5-4 7.5l-1-1c1.5-1.5 2.5-3 2.5-6.5a5 5 0 0 0-10 0c0 3.5 1 5 2.5 6.5l-1 1C7 14.5 5 12 5 9a7 7 0 0 1 7-7z"/><path d="M12 16v4M9 18h6"/></svg>
+        </span>
+        <div class="trait-name">爱自己再爱人</div>
+        <div class="trait-desc">先把自己照顾好，才有能量无限地去爱客户、爱团队。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </span>
+        <div class="trait-name">开心</div>
+        <div class="trait-desc">工作应该是快乐的。我们不压抑情绪，追求在创造价值中找到真实的喜悦。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/></svg>
+        </span>
+        <div class="trait-name">品质</div>
+        <div class="trait-desc">做事不将就，输出的每一份结果都要经得起自己的检验。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </span>
+        <div class="trait-name">专业</div>
+        <div class="trait-desc">持续学习，精进技能，成为客户最可以依赖的专业伙伴。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/><polyline points="17,6 23,6 23,12"/></svg>
+        </span>
+        <div class="trait-name">成长</div>
+        <div class="trait-desc">每天比昨天好一点。我们拥抱挑战，从错误中学习，保持成长的节奏。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <div class="trait-name">利他</div>
+        <div class="trait-desc">先想到别人的需求，把团队和客户的利益放在自我利益之前。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg>
+        </span>
+        <div class="trait-name">行动力</div>
+        <div class="trait-desc">想清楚就去做，不拖延不观望。快速行动、快速反馈、快速迭代。</div>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </span>
+        <div class="trait-name">包容</div>
+        <div class="trait-desc">尊重每个人的差异，接纳不同背景与视角，在多元中碰撞出更好的答案。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BRAND PROMISE ══ -->
+<section class="promise-section">
+  <div class="promise-inner fade-up">
+    <p class="promise-en">Brand Promise · 品牌承诺</p>
+    <h2 class="promise-title">
+      <span class="promise-line">每一次护理背后，</span>
+      <span class="promise-line">是我们对每一位女性的<em>真心承诺</em></span>
+    </h2>
+    <p class="promise-desc">
+      我们承诺：以科学为基，以真诚为本，以品质为底线。<br/>
+      让每一位信任我们的客户，都能感受到被尊重、被呵护，<br/>
+      并在与我们的每一次相遇中，更爱自己一点。
+    </p>
+  </div>
+</section>
+
+<!-- ══ BEHAVIOR ══ -->
+<section class="beh-section" id="behavior">
+  <div class="section-inner">
+    <div class="fade-up">
+      <p class="s-label">Behavior Code</p>
+      <h2 class="s-title">价值观的行为化表达</h2>
+      <p class="s-intro">好的文化不止停留在词语里，而是体现在每一天的具体行动中。</p>
+      <div class="s-rule"></div>
+    </div>
+    <div class="fade-in">
+      <table class="beh-table">
+        <thead>
+          <tr>
+            <th>场景</th>
+            <th>We Do &nbsp; 我们这样做</th>
+            <th>We Don't &nbsp; 我们不这样做</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>面对客户投诉</td>
+            <td><span class="beh-badge beh-badge-do">✓</span> 先共情，后解决；承认不足，不推诿</td>
+            <td><span class="beh-badge beh-badge-dont">✕</span> 反驳客户、转移责任、机械道歉</td>
+          </tr>
+          <tr>
+            <td>护理推荐</td>
+            <td><span class="beh-badge beh-badge-do">✓</span> 根据客户肤质和需求诚实推荐，说清优缺点</td>
+            <td><span class="beh-badge beh-badge-dont">✕</span> 夸大功效、隐瞒局限、只为完成销售目标</td>
+          </tr>
+          <tr>
+            <td>团队协作</td>
+            <td><span class="beh-badge beh-badge-do">✓</span> 主动沟通，及时反馈，勇于提出不同意见</td>
+            <td><span class="beh-badge beh-badge-dont">✕</span> 背后议论、不说不做、拖延推诿</td>
+          </tr>
+          <tr>
+            <td>对待失误</td>
+            <td><span class="beh-badge beh-badge-do">✓</span> 坦诚承认，分析原因，总结改进</td>
+            <td><span class="beh-badge beh-badge-dont">✕</span> 隐瞒错误、找借口、重复犯同样的错</td>
+          </tr>
+          <tr>
+            <td>内容与传播</td>
+            <td><span class="beh-badge beh-badge-do">✓</span> 真实呈现护理效果，诚实分享客户反馈</td>
+            <td><span class="beh-badge beh-badge-dont">✕</span> 过度滤镜、虚假效果对比、购买水军评价</td>
+          </tr>
+          <tr>
+            <td>个人成长</td>
+            <td><span class="beh-badge beh-badge-do">✓</span> 主动学习，分享所学，帮助身边人成长</td>
+            <td><span class="beh-badge beh-badge-dont">✕</span> 固步自封、嫌弃新知识、独享资源</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REFERENCE ══ -->
+<section class="ref-section" id="ref">
+  <div class="section-inner">
+    <div class="fade-up">
+      <p class="s-label">Inspiration</p>
+      <h2 class="s-title">我们向谁学习</h2>
+      <p class="s-intro">好的品牌文化不是凭空而来，我们向优秀的企业学习，并结合自身基因，走出属于自己的路。</p>
+      <div class="s-rule"></div>
+    </div>
+    <div class="ref-cards fade-in">
+      <div class="ref-card">
+        <div class="ref-name">Valve</div>
+        <div class="ref-type">游戏公司 · 扁平文化标杆</div>
+        <div class="ref-desc">
+          Valve 以其去中心化的扁平管理和员工高度自驱著称。他们相信最聪明的人在合适的环境中会做出最好的决策——不需要层层审批，只需要清晰的目标与相互信任的文化土壤。
+        </div>
+        <div class="ref-lessons">
+          <div class="ref-lesson">去除不必要的管理层级，相信每个人的判断力</div>
+          <div class="ref-lesson">员工手册文化：把"我们相信什么"写得清晰可读</div>
+          <div class="ref-lesson">招聘比管理更重要：找到对的人，再给他们空间</div>
+        </div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-name">亚朵酒店</div>
+        <div class="ref-type">生活方式品牌 · 有温度的服务典范</div>
+        <div class="ref-desc">
+          亚朵从一家酒店出发，构建了一个"有温度的生活方式品牌"。它的服务哲学是：把每一位客人当作有情感、有故事的真实的人，用细节创造超出预期的感动，从而建立深度品牌忠诚。
+        </div>
+        <div class="ref-lessons">
+          <div class="ref-lesson">服务设计以"感动"而非"标准"为终点，与我们高度一致</div>
+          <div class="ref-lesson">将品牌文化渗透到每一个服务触点，做到知行合一</div>
+          <div class="ref-lesson">用社区与内容连接用户，从交易关系升级为情感关系</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-brand-en">LIGHT LAB</div>
+  <div class="footer-brand-cn">光 · 研 肤 中 心</div>
+  <p class="footer-slogan">不止护肤，更是一种精致自信的生活方式。</p>
+  <div class="footer-divider"></div>
+  <p class="footer-meta">
+    品牌文化手册 &nbsp;·&nbsp; Brand Culture Manual<br/>
+    Internal Document · 内部文件 &nbsp;·&nbsp; © 2026 LIGHT LAB · All Rights Reserved
+  </p>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up, .fade-in').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
